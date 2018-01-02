@@ -5,7 +5,11 @@
   "scripts": {
     "start:ios": "yarn haul start --platform ios",
     "bundle:ios": "haul bundle --platform ios --entry-file index.js --bundle-output dist/ios/main.jsbundle --assets-dest dist/assets --dev false",
-    "release:ios": "code-push release TsLab dist/ios 1.0.0",
+    "release-push:ios": "code-push release TsLab dist/ios 1.0.0",
+    "beta-store:ios": "script/publish ios beta",
+    "beta-store:android": "script/publish android beta",
+    "release-store:ios": "script/publish ios release",
+    "release-store:android": "script/publish android release",
     "test": "jest"
   },
   "dependencies": {

@@ -7,7 +7,7 @@ import {
   Button
 } from 'react-native';
 import codePush from 'react-native-code-push'
-
+import { Navigator } from 'detox'
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
     'Cmd+D or shake for dev menu',
@@ -15,23 +15,42 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-class App extends Component<{}> {
+class App extends React.Component<{}, { hello: boolean }> {
+  state = {
+    hello: false
+  }
+
   private handlePress = () => {
     codePush.sync({
       installMode: codePush.InstallMode.IMMEDIATE,
     })
   }
 
+  private handleNextScreen = () => {
+    this.setState({
+      hello: true
+    })
+  }
   public render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
+        <Text style={styles.welcome} testID="welcomeText">
           A simple update 0.0.11
         </Text>
         <Button
           onPress={this.handlePress}
           title="UPDATE hehe"
         />
+        <Button
+          onPress={this.handleNextScreen}
+          title="Next screen"
+          testID="helloButton"
+        />
+        {this.state.hello &&
+          <Text style={styles.welcome} testID="helloText">
+            Hello !
+          </Text>
+        }
       </View>
     );
   }

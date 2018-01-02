@@ -6,3 +6,6 @@ storiesOf('Example Component', module)
   .add('default', () => (
     <Example message="hehehe" />
   ))
+  .add('english', () => (
+    <Example message="fuck" />
+  ))

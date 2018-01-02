@@ -1,5 +1,5 @@
 module.exports = ({ platform }, { module, resolve }) => ({
-  entry: `./storybook/index.js`,
+  entry: `./index.storybook.js`,
   module: {
     ...module,
     rules: [

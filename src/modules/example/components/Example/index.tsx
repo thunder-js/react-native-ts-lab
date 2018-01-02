@@ -1,9 +1,12 @@
 import * as React from 'react'
 import { View, Text } from 'react-native'
 
-const Example = () => (
+const Example = ({
+  message
+}) => (
   <View>
-    <Text>Hello world</Text>
+    <Text>Hello world !!!</Text>
+    <Text>{message}</Text>
   </View>
 )
 

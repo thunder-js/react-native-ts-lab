@@ -4,5 +4,5 @@ import Example from './'
 
 storiesOf('Example Component', module)
   .add('default', () => (
-    <Example />
+    <Example message="hehehe" />
   ))

@@ -7,11 +7,12 @@
 
 ## Features
 - [x] Storybook (with HMR)
+- [ ] Storyshots
 - [x] Haul packager for symlinks
 - [x] TypeScript
 - [x] CodePush
 - [x] Fastlane
-- [ ] Snapshot testing
+- [x] Snapshot testing
 - [x] Detox E2E tests
 - [ ] Analytics
 - [ ] Crashlytics

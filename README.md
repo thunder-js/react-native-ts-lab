@@ -11,4 +11,7 @@
 - [x] TypeScript
 - [x] CodePush
 - [x] Fastlane
-
+- [ ] Snapshot testing
+- [ ] Detox E2E tests
+- [ ] Analytics
+- [ ] Crashlytics

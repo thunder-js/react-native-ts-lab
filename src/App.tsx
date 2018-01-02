@@ -5,6 +5,7 @@ import {
   Text,
   View
 } from 'react-native';
+import codePush from 'react-native-code-push'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -13,7 +14,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
+class App extends Component<{}> {
   public render() {
     return (
       <View style={styles.container}>
@@ -43,3 +44,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default codePush()(App);

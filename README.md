@@ -12,6 +12,6 @@
 - [x] CodePush
 - [x] Fastlane
 - [ ] Snapshot testing
-- [ ] Detox E2E tests
+- [x] Detox E2E tests
 - [ ] Analytics
 - [ ] Crashlytics

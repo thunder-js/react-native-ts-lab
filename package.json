@@ -13,6 +13,7 @@
     "storybook:ios": "storybook start -p 7007 --haul webpack.haul.storybook.js --platform ios",
     "storybook:android": "storybook start -p 7007 --haul webpack.haul.storybook.js --platform android",
     "test": "jest",
+    "test:e2e": "detox test",
     "storybook": "storybook start -p 7007"
   },
   "dependencies": {

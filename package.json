@@ -10,7 +10,8 @@
     "beta-store:android": "script/publish-store android beta",
     "release-store:ios": "script/publish-store ios release",
     "release-store:android": "script/publish-store android release",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "storybook start -p 7007"
   },
   "dependencies": {
     "react": "16.0.0",
@@ -19,13 +20,19 @@
     "react-native-navigation": "^1.1.328"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.3.3",
+    "@storybook/addon-links": "^3.3.3",
+    "@storybook/react-native": "^3.3.3",
     "babel-jest": "22.0.4",
     "babel-loader": "^7.1.2",
     "babel-preset-react-native": "4.0.0",
     "haul": "^1.0.0-beta.11",
     "jest": "22.0.4",
+    "prop-types": "^15.6.0",
+    "react-dom": "16.0.0",
     "react-test-renderer": "16.0.0",
     "ts-loader": "^3.2.0",
+    "tslint": "^5.8.0",
     "typescript": "^2.6.2"
   },
   "jest": {

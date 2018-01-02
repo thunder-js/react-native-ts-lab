@@ -7,7 +7,7 @@
 
 ## Features
 - [x] Storybook (with HMR)
-- [ ] Storyshots
+- [x] Storyshots
 - [x] Haul packager for symlinks
 - [x] TypeScript
 - [x] CodePush

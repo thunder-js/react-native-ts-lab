@@ -10,6 +10,8 @@
     "beta-store:android": "script/publish-store android beta",
     "release-store:ios": "script/publish-store ios release",
     "release-store:android": "script/publish-store android release",
+    "storybook:ios": "storybook start -p 7007 --haul webpack.haul.storybook.js --platform ios",
+    "storybook:android": "storybook start -p 7007 --haul webpack.haul.storybook.js --platform android",
     "test": "jest",
     "storybook": "storybook start -p 7007"
   },

@@ -1,4 +1,7 @@
-import { AppRegistry } from 'react-native';
-import App from './src/App';
+import 'haul/hot/patch'
+import './src/screens'
 
-AppRegistry.registerComponent('TsLab', () => App);
+// import { AppRegistry } from 'react-native';
+// import App from './src/App';
+
+// AppRegistry.registerComponent('TsLab', () => App);

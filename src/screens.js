@@ -1,5 +1,4 @@
 import { makeHot, tryUpdateSelf, callOnce, clearCacheFor, redraw } from 'haul/hot';
-// import codePush from 'react-native-code-push';
 import App from './App';
 import { Navigation } from 'react-native-navigation'
 

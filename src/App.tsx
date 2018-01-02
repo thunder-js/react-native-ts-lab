@@ -26,7 +26,7 @@ class App extends Component<{}> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          A simple update 0.0.9
+          A simple update 0.0.11
         </Text>
         <Button
           onPress={this.handlePress}
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'purple',
+    backgroundColor: 'lightgreen',
   },
   welcome: {
     fontSize: 20,
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default codePush({ checkFrequency: codePush.CheckFrequency.MANUAL })(App);
+export default codePush({ checkFrequency: codePush.CheckFrequency.ON_APP_START })(App);

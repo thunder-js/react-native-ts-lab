@@ -3,7 +3,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 import codePush from 'react-native-code-push'
 
@@ -15,12 +16,22 @@ const instructions = Platform.select({
 });
 
 class App extends Component<{}> {
+  private handlePress = () => {
+    codePush.sync({
+      installMode: codePush.InstallMode.IMMEDIATE,
+    })
+  }
+
   public render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          A simple update 0.0.9
         </Text>
+        <Button
+          onPress={this.handlePress}
+          title="UPDATE hehe"
+        />
       </View>
     );
   }
@@ -31,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'purple',
   },
   welcome: {
     fontSize: 20,
@@ -45,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default codePush()(App);
+export default codePush({ checkFrequency: codePush.CheckFrequency.MANUAL })(App);

@@ -1,0 +1,3 @@
+// This is where storyshots searchs for stories...
+// We can improve this :)
+import './stories'

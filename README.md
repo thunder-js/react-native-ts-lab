@@ -5,4 +5,10 @@
 *Where you mix the chemicals*
 
 
+## Features
+- [x] Storybook (with HMR)
+- [x] Haul packager for symlinks
+- [x] TypeScript
+- [x] CodePush
+- [x] Fastlane
 

@@ -1,3 +1,5 @@
+declare var module: any;
+
 import { makeHot, tryUpdateSelf, callOnce, clearCacheFor, redraw } from 'haul/hot';
 import { Navigation } from 'react-native-navigation'
 import { configure } from '@storybook/react-native';

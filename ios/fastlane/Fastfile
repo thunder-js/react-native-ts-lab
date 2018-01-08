@@ -22,6 +22,39 @@ platform :ios do
     # carthage
   end
 
+  desc "Creates App on AppStore"
+  lane :publishStore do
+    produce(
+      username: ENV["APPLE_ID"],
+      app_identifier: ENV["APP_IDENTIFIER"],
+      app_name: ENV["APP_NAME"],
+      team_id: ENV["TEAM_ID"],
+      team_name: ENV["TEAM_NAME"],
+      itc_team_id: ENV["ITC_TEAM_ID"],
+      itc_team_name: ENV["ITC_TEAM_NAME"]
+    )
+  end
+
+  desc "Create Apple certificates"
+  lane :createCertificates do
+    match(
+      type: "development",
+      git_url: ENV["GIT_URL"],
+      app_identifier: ENV["APP_IDENTIFIER"],
+      username: ENV["APPLE_ID"],
+      team_id: ENV["TEAM_ID"],
+      team_name: ENV["TEAM_NAME"],
+    )
+    match(
+      type: "appstore",
+      git_url: ENV["GIT_URL"],
+      app_identifier: ENV["APP_IDENTIFIER"],
+      username: ENV["APPLE_ID"],
+      team_id: ENV["TEAM_ID"],
+      team_name: ENV["TEAM_NAME"],
+    )
+  end
+
   desc "Runs all the tests"
   lane :test do
     scan
@@ -30,20 +63,41 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
-    # match(type: "appstore") # more information: https://codesigning.guide
-    gym(
-      scheme: "TsLab",
-      export_method: "app-store"
-    ) # Build your app - more options available
-    pilot(
-      skip_waiting_for_build_processing: true,
-      team_id: "118298111"
+    increment_build_number
+
+    match(
+      type: "appstore",
+      git_url: ENV["GIT_URL"],
+      app_identifier: ENV["APP_IDENTIFIER"],
+      username: ENV["APPLE_ID"],
+      team_id: ENV["TEAM_ID"],
+      team_name: ENV["TEAM_NAME"],
     )
 
+    gym(
+      export_method: "app-store",
+      scheme: ENV["SCHEME"]
+    ) # Build your app - more options available
+    pilot(
+      distribute_external: true,
+      changelog: "Novas features e bug fixes",
+      beta_app_description: "Beta app description",
+      beta_app_feedback_email: "rafael.correia.poli@gmail.com",
+      email: "rafael.correia.poli@gmail.com",
+      first_name: "Rafael",
+      last_name: "Ribeiro Correia",
+      skip_waiting_for_build_processing: true,
+      dev_portal_team_id: ENV["TEAM_ID"],
+      username: ENV["APPLE_ID"],
+      apple_id: ENV["APPLE_ID"],
+      app_identifier: ENV["APP_IDENTIFIER"],
+      team_id: ENV["ITC_TEAM_ID"],
+      team_name: ENV["ITC_TEAM_NAME"]
+    )
     clean_build_artifacts
     commit_version_bump(
       message: "Fastlane iOS: Release new build #{lane_context[SharedValues::BUILD_NUMBER]} [ci skip]",
-      xcodeproj: './TsLab.xcodeproj',
+      xcodeproj: ENV["XCODE_PROJ"],
       force: true
     )
     # sh "your_script.sh"
@@ -54,8 +108,15 @@ platform :ios do
   lane :release do
     # match(type: "appstore")
     # snapshot
-    gym(scheme: "TsLab") # Build your app - more options available
-    deliver(force: true)
+    gym(
+      export_method: "app-store",
+      scheme: ENV["SCHEME"]
+    )
+    deliver(
+      force: true,
+      username: ENV["APPLE_ID"],
+      app_identifier: ENV["APP_IDENTIFIER"]
+    )
     # frameit
   end
 

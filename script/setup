@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+# Rename app
+react-native-rename "New App" "com.thunder.newapp"
+
+# Create iOS app on CodePush
+code-push app add NewApp-iOS ios react-native --format json
+# Create Android app on CodePush
+code-push add app NewApp-Android android react-native --format json
+
+# Get staging & production keys for iOS in JSON format
+code-push deployment ls NewApp-iOS -k --format json
+# Get staging & production keys for Android in JSON format
+code-push deployment ls NewApp-Android -k --format json
+
+# Update ios/NewApp/Info.plist. Replace LZ1ij9ftju-QiA73Lb55PS2jQ4GW1e0b1580-1e9f-4dc6-a7c9-4c6f6ac0bec5
+# Update  android/app/src/main/java/com/thunder/newapp/MainApplication.java. Replace LZ1ij9ftju-QiA73Lb55PS2jQ4GW1e0b1580-1e9f-4dc6-a7c9-4c6f6ac0bec5
+
+
+# Change ios/fastlane/Appfile.
+# Replace com.thunder.tslab (app_identifier)
+# Replace rafael.correia.poli@gmail.com (apple_id)
+# Replace Rafael Ribeiro Correia (team name)
+# Replace WRM4UPAZ5R (team id)
+# Replace 118298111 (itunes connect team id)
+ 
+# Create App on Apple store
+cd ios
+bundle exec fastlane publishStore
+
+# Change ios/fastlane/Matchfile. Replace git@github.com:rafaelcorreiapoli/apple-certificates.git
+# Create certificates
+bundle exec fastlane createCertificates

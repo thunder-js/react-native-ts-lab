@@ -1,0 +1,10 @@
+# app_identifier "com.thunder.newapp" # The bundle identifier of your app
+# apple_id "rafael.correia.poli@gmail.com" # Your Apple email address
+
+# team_name "Rafael Ribeiro Correia"
+# team_id "WRM4UPAZ5R"
+
+
+# itc_team_id "118298111"
+# # you can even provide different app identifiers, Apple IDs and team names per lane:
+# # More information: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md

@@ -1,4 +1,4 @@
-package com.tslab;
+package com.thunder.newapp;
 
 import android.app.Application;
 

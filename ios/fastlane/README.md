@@ -30,6 +30,16 @@ xcode-select --install
 
 # Available Actions
 ## iOS
+### ios publishStore
+```
+fastlane ios publishStore
+```
+Creates App on AppStore
+### ios createCertificates
+```
+fastlane ios createCertificates
+```
+Create Apple certificates
 ### ios test
 ```
 fastlane ios test

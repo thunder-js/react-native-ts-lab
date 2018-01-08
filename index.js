@@ -1,2 +1,2 @@
 import 'haul/hot/patch'
-import './src/screens'
+import './src/boot'

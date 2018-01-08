@@ -7,8 +7,8 @@
     "start:android": "yarn haul start --platform android",
     "bundle:ios": "haul bundle --platform ios --entry-file index.js --bundle-output dist/ios/main.jsbundle --assets-dest dist/assets --dev false",
     "bundle:android": "haul bundle --platform android --entry-file index.js --bundle-output dist/android/main.jsbundle --assets-dest dist/assets --dev false",
-    "release-push:ios": "yarn run bundle:ios && code-push release TsLab dist/ios 1.0.0",
-    "release-push:android": "yarn run bundle:android && code-push release TsLab-Android dist/android 1.0.0",
+    "release-push:ios": "yarn run bundle:ios && code-push release NewApp-iOS dist/ios 1.0.0",
+    "release-push:android": "yarn run bundle:android && code-push release NewApp-Android dist/android 1.0.0",
     "beta-store:ios": "script/publish-store ios beta",
     "beta-store:android": "script/publish-store android beta",
     "release-store:ios": "script/publish-store ios release",
@@ -75,8 +75,8 @@
   "detox": {
     "configurations": {
       "ios.sim.debug": {
-        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/TsLab.app",
-        "build": "xcodebuild -project ios/TsLab.xcodeproj -scheme TsLab -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/NewApp.app",
+        "build": "xcodebuild -project ios/NewApp.xcodeproj -scheme NewApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 7"
       }

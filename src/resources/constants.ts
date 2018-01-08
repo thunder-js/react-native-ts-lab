@@ -1,0 +1,1 @@
+export const BUNDLE_IDENTIFIER = 'com.thunder.newapp'

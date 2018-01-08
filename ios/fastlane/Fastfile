@@ -17,7 +17,7 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
     # cocoapods
     # carthage
   end
@@ -32,6 +32,10 @@ platform :ios do
       team_name: ENV["TEAM_NAME"],
       itc_team_id: ENV["ITC_TEAM_ID"],
       itc_team_name: ENV["ITC_TEAM_NAME"]
+    )
+
+    slack(
+      message: "*#{ENV["APP_NAME"]} (#{ENV["APP_IDENTIFIER"]}):* Created *new app*"
     )
   end
 
@@ -53,6 +57,10 @@ platform :ios do
       team_id: ENV["TEAM_ID"],
       team_name: ENV["TEAM_NAME"],
     )
+
+    slack(
+      message: "*#{ENV["APP_NAME"]} (#{ENV["APP_IDENTIFIER"]}):* Created *certificates*"
+    )
   end
 
   desc "Runs all the tests"
@@ -65,6 +73,10 @@ platform :ios do
   lane :beta do
     increment_build_number
 
+    slack(
+      message: "*#{ENV["APP_NAME"]} (#{ENV["APP_IDENTIFIER"]}):* Starting new submission to TestFlight: #{lane_context[SharedValues::BUILD_NUMBER]}"
+    )
+    
     match(
       type: "appstore",
       git_url: ENV["GIT_URL"],
@@ -76,7 +88,8 @@ platform :ios do
 
     gym(
       export_method: "app-store",
-      scheme: ENV["SCHEME"]
+      scheme: ENV["SCHEME"],
+      clean: false
     ) # Build your app - more options available
     pilot(
       distribute_external: true,
@@ -86,19 +99,24 @@ platform :ios do
       email: "rafael.correia.poli@gmail.com",
       first_name: "Rafael",
       last_name: "Ribeiro Correia",
-      skip_waiting_for_build_processing: true,
+      skip_waiting_for_build_processing: false,
       dev_portal_team_id: ENV["TEAM_ID"],
       username: ENV["APPLE_ID"],
       apple_id: ENV["APPLE_ID"],
       app_identifier: ENV["APP_IDENTIFIER"],
       team_id: ENV["ITC_TEAM_ID"],
-      team_name: ENV["ITC_TEAM_NAME"]
+      team_name: ENV["ITC_TEAM_NAME"],
+      testers_file_path: "../../assets/testers.csv",
+      groups: "Cliente"
     )
     clean_build_artifacts
     commit_version_bump(
       message: "Fastlane iOS: Release new build #{lane_context[SharedValues::BUILD_NUMBER]} [ci skip]",
       xcodeproj: ENV["XCODE_PROJ"],
       force: true
+    )
+    slack(
+      message: "*#{ENV["APP_NAME"]} (#{ENV["APP_IDENTIFIER"]}):* New build avaiable on TestFlight: #{lane_context[SharedValues::BUILD_NUMBER]}"
     )
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
@@ -131,10 +149,10 @@ platform :ios do
   end
 
   error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
+    slack(
+      message: "*#{ENV["APP_NAME"]} (#{ENV["APP_IDENTIFIER"]}):* Error\n#{exception.message}" ,
+      success: false
+    )
   end
 end
 

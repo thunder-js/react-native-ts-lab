@@ -1303,7 +1303,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Rafael Ribeiro Correia (9KGBT65XF6)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = WRM4UPAZ5R;
 				HEADER_SEARCH_PATHS = (
@@ -1333,7 +1333,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Rafael Ribeiro Correia (WRM4UPAZ5R)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rafael Ribeiro Correia (WRM4UPAZ5R)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = WRM4UPAZ5R;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

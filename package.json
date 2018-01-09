@@ -70,7 +70,7 @@
     ],
     "moduleNameMapper": {
       ".+\\.(png)$": "jest-static-stubs/$1"
-   }
+    }
   },
   "detox": {
     "configurations": {

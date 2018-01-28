@@ -1,6 +1,0 @@
-###################### More Options ######################
-# If you want to have even more control, check out the documentation
-# https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md
-
-app_identifier "com.thunder.newapp" # The bundle identifier of your app
-username "rafael.correia.poli@gmail.com" # your Apple ID user
